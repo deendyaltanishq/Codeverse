@@ -1,0 +1,38 @@
+{
+  "name": "codeverse",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "start": "node backend/index.js",
+    "dev": "nodemon backend/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deendyaltanishq/Codeverse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deendyaltanishq/Codeverse/issues"
+  },
+  "homepage": "https://github.com/deendyaltanishq/Codeverse#readme",
+  "description": "",
+  "dependencies": {
+    "@faker-js/faker": "^10.0.0",
+    "axios": "^1.11.0",
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.28.3",
+    "babel-jest": "^30.1.2",
+    "faker": "^6.6.6",
+    "jest": "^30.1.3",
+    "nodemon": "^3.1.10",
+    "socket.io-client": "^4.8.1",
+    "supertest": "^7.1.4"
+  }
+}
