@@ -68,22 +68,36 @@ io.on("connection", (socket)=>{
 
  socket.on("compileCode", async ({code, roomId, language, version}) => {
     console.log("COMPILE BUTTON CLICKED");
-        if(rooms.has(roomId)){
+
+    try {
+        if (rooms.has(roomId)) {
             const room = rooms.get(roomId);
-            const response = await axios.post("https://emkc.org/api/v2/piston/execute", {
-                language,
-                version,
-                files:[
-                    {
-                        content: code
-                    }
-                ]
-            })
+
+            console.log("Calling Piston API...");
+
+            const response = await axios.post(
+                "https://emkc.org/api/v2/piston/execute",
+                {
+                    language,
+                    version,
+                    files: [
+                        {
+                            content: code
+                        }
+                    ]
+                }
+            );
+
+            console.log("PISTON SUCCESS");
+            console.log(response.data);
 
             room.output = response.data.run.output;
             io.to(roomId).emit("codeResponse", response.data);
         }
-    });
+    } catch (error) {
+        console.log("PISTON ERROR:", error.message);
+    }
+});
 
     socket.on("disconnect", ()=>{
         if(currentRoom && currentUser){
