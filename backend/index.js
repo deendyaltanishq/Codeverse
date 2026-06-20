@@ -95,8 +95,9 @@ io.on("connection", (socket)=>{
             io.to(roomId).emit("codeResponse", response.data);
         }
     } catch (error) {
-        console.log("PISTON ERROR:", error.message);
-    }
+    console.log("PISTON ERROR:", error.message);
+    console.log("PISTON RESPONSE:", error.response?.data);
+}
 });
 
     socket.on("disconnect", ()=>{
