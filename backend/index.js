@@ -66,7 +66,8 @@ io.on("connection", (socket)=>{
         socket.to(roomId).emit("languageUpdate", language);
     });
 
-    socket.on("compileCode", async({code, roomId, language, version}) => {
+ socket.on("compileCode", async ({code, roomId, language, version}) => {
+    console.log("COMPILE BUTTON CLICKED");
         if(rooms.has(roomId)){
             const room = rooms.get(roomId);
             const response = await axios.post("https://emkc.org/api/v2/piston/execute", {
