@@ -75,23 +75,26 @@ io.on("connection", (socket)=>{
 
             console.log("Calling Piston API...");
 
-            const response = await axios.post(
-                "https://emkc.org/api/v2/piston/execute",
-                {
-                    language,
-                    version,
-                    files: [
-                        {
-                            content: code
-                        }
-                    ]
-                }
-            );
+           const response = await axios.post(
+  "https://judge029.p.rapidapi.com/submissions?base64_encoded=false&wait=true&fields=*",
+  {
+    source_code: code,
+    language_id: 54,
+    stdin: ""
+  },
+  {
+    headers: {
+      "Content-Type": "application/json",
+      "x-rapidapi-host": "judge029.p.rapidapi.com",
+     "x-rapidapi-key": "YOUR_ACTUAL_RAPIDAPI_KEY"
+    }
+  }
+);
 
             console.log("PISTON SUCCESS");
             console.log(response.data);
 
-            room.output = response.data.run.output;
+room.output = response.data.stdout;
             io.to(roomId).emit("codeResponse", response.data);
         }
     } catch (error) {
