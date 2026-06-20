@@ -1,9 +1,14 @@
+import cors from "cors";
 import express from "express";
 import http from "http";
 import { Server } from "socket.io";
 import axios from "axios";
 
 const app = express();
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST"]
+}));
 const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
 const io = new Server(server, {
