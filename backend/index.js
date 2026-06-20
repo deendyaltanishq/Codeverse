@@ -86,7 +86,7 @@ io.on("connection", (socket)=>{
     headers: {
       "Content-Type": "application/json",
       "x-rapidapi-host": "judge029.p.rapidapi.com",
-     "x-rapidapi-key": "YOUR_ACTUAL_RAPIDAPI_KEY"
+  "x-rapidapi-key": "f7506caa7fmsha7e1033b6c33e69p1ca690jsnb1b560dfc17a"
     }
   }
 );
